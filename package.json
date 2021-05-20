@@ -1,0 +1,35 @@
+{
+  "name": "solidity-coverage-delegatecall",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dileepfrog/solidity-coverage-delegatecall.git"
+  },
+  "description": "Demonstrate missing library coverage hits",
+  "homepage": "https://github.com/dileepfrog/solidity-coverage-delegatecall",
+  "scripts": {
+    "analyze": "slither .",
+    "build": "yarn build:clean && yarn build:sol && yarn build:ts",
+    "build:clean": "rm -rf build; yarn build:typechain:clean; rm -rf coverage",
+    "build:sol": "truffle compile && yarn build:typechain",
+    "build:ts": "tsc -p .",
+    "build:typechain:clean": "rm -rf types/truffle-contracts",
+    "build:typechain": "typechain --target=truffle-v5 'build/contracts/*.json'",
+    "coverage": "truffle run coverage --file=\"./build/index.test.js\""
+  },
+  "dependencies": {
+    "chai": "^4.2.0"
+  },
+  "devDependencies": {
+    "@typechain/truffle-v5": "^4.0.1",
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
+    "mocha": "^8.2.1",
+    "solidity-coverage": "^0.7.16",
+    "truffle": "5.1.63",
+    "ts-node": "9.1.1",
+    "ts-node-dev": "1.1.1",
+    "typechain": "4.0.3",
+    "typescript": "4.1.3"
+  }
+}
